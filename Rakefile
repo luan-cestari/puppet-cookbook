@@ -4,7 +4,7 @@ desc "Run Puppet on ENV['CLIENT']"
 task :apply do
   client = ENV['CLIENT']
   sh "git push"
-  sh "#{SSH}"
+  sh "#{SSH} #{client}"
   sh "sudo su vagrant"
-  sh "#{client} pull-updates"
+  sh "pull-updates"
 end
