@@ -1,3 +1,3 @@
-node 'debian-71-vim-puppet.box' {
+node 'cookbook' {
   include puppet
 }

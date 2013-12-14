@@ -7,19 +7,19 @@ class puppet {
     source => 'puppet:///modules/puppet/pull-updates.sh',
     mode   => '0755',
   }
-  file { '/home/vagrant/.ssh/id_rsa':
-    source => 'puppet:///modules/puppet/vagrantkey.priv',
-    owner  => 'vagrant',
+  file { '/home/deploy/.ssh/id_rsa':
+    source => 'puppet:///modules/puppet/deploy.priv',
+    owner  => 'deploy',
     mode   => '0600',
   }
-  file { '/home/vagrant/.ssh/id_rsa.pub':
-    source => 'puppet:///modules/puppet/vagrantkey.pub',
-    owner  => 'vagrant',
+  file { '/home/deploy/.ssh/id_rsa.pub':
+    source => 'puppet:///modules/puppet/deploy.pub',
+    owner  => 'deploy',
     mode   => '0600',
   }
   cron { 'run-puppet':
     ensure  => 'present',
-    user    => 'vagrant',
+    user    => 'deploy',
     command => '/usr/local/bin/pull-updates',
     minute  => '*/10',
     hour    => '*',

@@ -1,4 +1,2 @@
 #!/bin/sh
-sudo su - vagrant
-cd /home/vagrant/puppet-cookbook
-git pull && /usr/local/bin/papply
+cd /home/deploy/puppet-cookbook && git pull && /usr/local/bin/papply
