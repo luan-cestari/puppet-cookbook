@@ -14,12 +14,13 @@ task :bootstrap do
   hostname = ENV['HOSTNAME'] || client
   commands = <<BOOTSTRAP
     sudo hostname #{hostname} && \
-    sudo su - c 'echo #{hostname} >/etc/hostname' && \
+    sudo su -c 'echo #{hostname} >/etc/hostname' && \
     wget apt.puppetlabs.com/puppetlabs-release-wheezy.deb && \
     sudo dpkg -i puppetlabs-release-wheezy.deb && \
     sudo apt-get update && sudo apt-get -y install git puppet && \
-    git clone #{REPO} puppet && \
-    sudo puppet apply --modulepath=/home/deploy/puppet-cookbook /modules /home/deploy/puppet/manifests/site.pp
+    rm -rf puppet-cookbook && \
+    git clone #{REPO} puppet-cookbook && \
+    sudo puppet apply --modulepath=/home/deploy/puppet-cookbook/modules /home/deploy/puppet-cookbook/manifests/site.pp
 BOOTSTRAP
   sh "#{SSH} #{client} '#{commands}'"
 end
