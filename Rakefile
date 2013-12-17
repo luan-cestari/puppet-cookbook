@@ -14,7 +14,6 @@ task :bootstrap do
   hostname = ENV['HOSTNAME'] || client
   commands = <<BOOTSTRAP
     sudo hostname #{hostname} && \
-    sudo su -c 'echo #{hostname} >/etc/hostname' && \
     wget apt.puppetlabs.com/puppetlabs-release-wheezy.deb && \
     sudo dpkg -i puppetlabs-release-wheezy.deb && \
     sudo apt-get update && sudo apt-get -y install git puppet && \

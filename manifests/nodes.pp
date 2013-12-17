@@ -1,3 +1,3 @@
-node 'cookbook' {
+node 'puppet-cookbook' {
   include puppet
 }
