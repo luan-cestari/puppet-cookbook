@@ -8,12 +8,14 @@ task :apply do
   sh "#{SSH} #{client} pull-updates"
 end
 
+    #sudo su -c 'echo #{HOSTNAME} > /etc/hostname' && \
 desc "Bootstrap Puppet on ENV['CLIENT'] with hostname ENV['HOSTNAME']"
 task :bootstrap do
   client = ENV['CLIENT']
   hostname = ENV['HOSTNAME'] || client
   commands = <<BOOTSTRAP
     sudo hostname #{hostname} && \
+    echo #{hostname} | sudo tee /etc/hostname && \
     wget apt.puppetlabs.com/puppetlabs-release-wheezy.deb && \
     sudo dpkg -i puppetlabs-release-wheezy.deb && \
     sudo apt-get update && sudo apt-get -y install git puppet && \
