@@ -1,9 +1,7 @@
 node 'puppet-cookbook' {
   include puppet
   include memcached
-}
 
-node 'puppet-cookbook' {
   include admin::ntp
 
   if tagged('admin::ntp') {
