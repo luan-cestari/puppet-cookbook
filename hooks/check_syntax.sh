@@ -12,7 +12,7 @@ else
 fi
 
 # Get list of new/modified manifest and template files to check (in git index)
-for indexfile in `git diff-index --diff-filter=AM -- name-only --cached $against | egrep '\.(pp|erb)'`
+for indexfile in `git diff-index --diff-filter=AM --name-only --cached $against | egrep '\.(pp|erb)'`
 do
     # Don't check empty files
     if [ `git cat-file -s :0:$indexfile` -gt 0 ]
