@@ -2,7 +2,7 @@ node 'puppet-cookbook' {
   include puppet
   include memcached
 
-  include admin::ntp
+  include admin::ntp_de
 
   if tagged('admin::ntp') {
     notify { 'This node is running NTP': }
