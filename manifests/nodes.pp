@@ -2,6 +2,9 @@ node 'puppet-cookbook' {
   include puppet
   include memcached
   include admin::ntp_de
+  include user::virtual
+  include user::sysadmins
+  include user::developers
   notify { "This is $::operatingsystem version $::operatingsystemrelease, on $::architecture architecture, kernel version $::kernelversion": }
 
   if tagged('admin::ntp') {
