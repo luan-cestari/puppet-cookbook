@@ -18,4 +18,11 @@ node 'puppet-cookbook' {
     file => '/etc/hosts',
     line => '127.0.0.1 puppet-cookbook',
   }
+
+  cron { 'run-backup':
+    ensure  => present,
+    command => '/usr/local/bin/backup',
+    hour    => inline_template('<%= @hostname.sum % 24 %>'),
+    minute  => '00',
+  }
 }
