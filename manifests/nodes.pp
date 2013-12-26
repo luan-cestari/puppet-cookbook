@@ -19,6 +19,11 @@ node 'puppet-cookbook' {
     line => '127.0.0.1 puppet-cookbook',
   }
 
+  append_if_no_such_line { '127.0.0.1 puppet-cookbook.local':
+    file => '/etc/hosts',
+    line => '127.0.0.1 puppet-cookbook.local',
+  }
+
   cron { 'run-backup':
     ensure  => present,
     command => '/usr/local/bin/backup',
