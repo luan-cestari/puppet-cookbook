@@ -1,6 +1,7 @@
 node 'puppet-cookbook' {
   include puppet
   include memcached
+  include apache
   include admin::ntp_de
   include user::virtual
   include user::sysadmins
