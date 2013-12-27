@@ -6,6 +6,8 @@ node 'puppet-cookbook' {
   include user::virtual
   include user::sysadmins
   include user::developers
+  apache::vhost { 'puppet-cookbook.local': }
+
   notify { "This is $::operatingsystem version $::operatingsystemrelease, on $::architecture architecture, kernel version $::kernelversion": }
 
   if tagged('admin::ntp') {
