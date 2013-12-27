@@ -1,12 +1,12 @@
 node 'puppet-cookbook' {
   include puppet
   include memcached
-  include apache
+  include nginx
   include admin::ntp_de
   include user::virtual
   include user::sysadmins
   include user::developers
-  apache::vhost { 'puppet-cookbook.local': }
+  nginx::vhost { 'puppet-cookbook.local': }
 
   notify { "This is $::operatingsystem version $::operatingsystemrelease, on $::architecture architecture, kernel version $::kernelversion": }
 
