@@ -7,11 +7,6 @@ class puppet {
     source => 'puppet:///modules/puppet/pull-updates.sh',
     mode   => '0755',
   }
-  #  file { '/home/deploy/.ssh/id_rsa':
-  #  source => 'puppet:///modules/puppet/deploy.priv',
-  #  owner  => 'deploy',
-  #  mode   => '0600',
-  #}
   file { '/home/deploy/.ssh/id_rsa.pub':
     source => 'puppet:///modules/puppet/deploy.pub',
     owner  => 'deploy',
@@ -23,5 +18,8 @@ class puppet {
     command => '/usr/local/bin/pull-updates',
     minute  => '*/10',
     hour    => '*',
+  }
+  package { 'vim-puppet':
+    ensure => installed,
   }
 }
